@@ -1,0 +1,22 @@
+def check_strength(password):
+    # Requirements
+    length = len(password) >= 8
+    upper = any(c.isupper() for c in password)
+    lower = any(c.islower() for c in password)
+    digit = any(c.isdigit() for c in password)
+    special = any(not c.isalnum() for c in password)
+
+    # Count how many conditions are met
+    conditions_met = sum([length, upper, lower, digit, special])
+
+    if conditions_met == 5:
+        return "Strong ✅"
+    elif conditions_met == 4:
+        return "Moderate ⚠️"
+    else:
+        return "Weak ❌"
+
+
+# Main program
+pw = input("Enter password: ")
+print("Password strength:", check_strength(pw))
